@@ -6,29 +6,18 @@
 #ifndef MagicHomeApi_h
 #define MagicHomeApi_h
 
-#include "Arduino.h"
-#include <WiFiClient.h>
+#include "Device.h"
 
 class MagicHomeApi
 {
   public:
-    MagicHomeApi(char *host_led, uint16_t port_led);
-    void ClientConnect();
-    void ClientDisconnect();
-    void ClientGetResponse();
-    void TurnOn();
-    void TurnOff();
-    void SetColor(int r, int g, int b, int w, int brightness);
-    void SetColorARGB(int r, int g, int b, int brightness);
-    void SetPresetFunction(int f_number, int speed);
-    void SetPresetFunctionARGB(int f_number, int speed, int brightness);
-    void SendData(byte data[], int len);
-    int CheckRange(int min, int max, int value);
-    int BrightnessLevel(int value, int brightness);
+    MagicHomeApi();
+    Device Discover();
   private:
-    WiFiClient client;
-    char *host;
-    uint16_t port;
+    char *udpAddress;
+    uint16_t udpPort;
+    WiFiUDP udp;
+    char* FormatIP(IPAddress ip);
 };
 
 #endif

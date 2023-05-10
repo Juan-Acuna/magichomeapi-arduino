@@ -2,7 +2,7 @@
 #include <ESP8266WiFi.h>
 #include <MagicHomeApi.h>
 
-MagicHomeApi Led("IP", 5577); // you may find it in your router settings
+Device Led("IP", 5577); // you may find it in your router settings or get it from MagicHomeApi.Discover
 
 void setup()
 {
